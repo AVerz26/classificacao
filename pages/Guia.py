@@ -6,14 +6,14 @@ import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 
-def save_to_csv(date, name, age, email):
+def save_to_csv(date, name, age, inicio, email):
     # Define CSV file path
     csv_file = "data.csv"
 
     # Write values to CSV file
     with open(csv_file, mode='a', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([date, name, age, email])
+        writer.writerow([date, name, age, inicio, email])
 
 def save_to_csv_again(df):
     # Define CSV file path
@@ -30,7 +30,7 @@ def load_csv_as_dataframe():
     if os.path.exists(csv_file):
         df = pd.read_csv(csv_file)
     else:
-        df = pd.DataFrame(columns=["Date", "Name", "Age", "Email"])  # Create empty DataFrame with specified column names
+        df = pd.DataFrame(columns=["Date", "Name", "Age", "Estoque Inicio", "Email"])  # Create empty DataFrame with specified column names
     return df
 
 def clear_csv():
@@ -83,11 +83,12 @@ if authentication_status:
     date = st.date_input("Data:", value=None, format="DD/MM/YYYY")
     name = st.selectbox("Escolher item: ", items_with_description)
     age = st.number_input("Quantidade:")
+    inicio = st.number_input("Estoque Inicial:")
     email = st.text_input("Situação:")
     
     if st.button("Enviar"):
         # Save values to CSV
-        save_to_csv(date, name, age, email)
+        save_to_csv(date, name, age, inicio, email)
         st.success("Dados salvos!")
     
     # Load CSV data and display as DataFrame
@@ -103,7 +104,7 @@ if authentication_status:
     # Button to clear CSV data
     if st.button("Limpar dados"):
         clear_csv()
-        save_to_csv("Date", "Item", "Quantidade", "Situação")
+        save_to_csv("Date", "Item", "Quantidade", "Estoque Inicio", "Situação")
 elif authentication_status == False:
     st.error('Username/password is incorrect')
 elif authentication_status == None:
