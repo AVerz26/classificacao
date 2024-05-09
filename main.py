@@ -20,7 +20,7 @@ def load_csv_as_dataframe():
     if os.path.exists(csv_file):
         df = pd.read_csv(csv_file)
     else:
-        df = pd.DataFrame(columns=["Name", "Age", "Email"])  # Create empty DataFrame if CSV doesn't exist
+        df = pd.DataFrame(columns=["Name", "Age", "Email"])  # Create empty DataFrame with specified column names
     return df
 
 def clear_csv():
