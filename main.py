@@ -38,8 +38,8 @@ def load_items_with_description_from_excel(file_path, column_name_item, column_n
     # Carrega o arquivo Excel
     df = pd.read_excel(file_path)
     
-    # Concatena as colunas de itens e descrições
-    items_with_description = df[column_name_item] + " - " + df[column_name_description]
+    # Convertendo os dados das colunas para string e depois concatenando
+    items_with_description = df[column_name_item].astype(str) + " - " + df[column_name_description].astype(str)
     
     return items_with_description.tolist()
 
