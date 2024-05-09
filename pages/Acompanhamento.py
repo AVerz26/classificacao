@@ -28,4 +28,4 @@ df2["Data"] = df2["Dt. Produção Imp."].dt.date
 hoje = pd.Timestamp.now().date()
 df2 = df2[df2["Dt. Produção Imp."].dt.date == hoje]
 
-st.write(df2.head())
+st.write(df2)
