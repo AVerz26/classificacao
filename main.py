@@ -53,13 +53,13 @@ st.title("Form to CSV")
 
 # Create form elements
 name = st.selectbox("Escolher item: ", items_with_description)
-age = st.number_input("Enter your age:")
-email = st.text_input("Enter your email:")
+age = st.number_input("Quantidade:")
+email = st.text_input("Situação:")
 
 if st.button("Submit"):
     # Save values to CSV
     save_to_csv(name, age, email)
-    st.success("Data saved successfully!")
+    st.success("Dados salvos!")
 
 # Load CSV data and display as DataFrame
 st.header("Data from CSV")
@@ -67,6 +67,6 @@ df = load_csv_as_dataframe()
 st.dataframe(df)
 
 # Button to clear CSV data
-if st.button("Clear Data"):
+if st.button("Limpar dados"):
     clear_csv()
-    save_to_csv("Name", "Age", "Email")
+    save_to_csv("Item", "Quantidade", "Situação")
