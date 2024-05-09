@@ -49,6 +49,9 @@ excel_file_path = "Items.xlsx"
 # Carrega os itens e descrições do Excel
 items_with_description = load_items_with_description_from_excel(excel_file_path, "Item", "Descrição")
 
+st.sidebar.header("Links Úteis")
+st.sidebar.markdown("[:egg: Rastreabilidade de Ovos](https://esteiraskajoo.streamlit.app/)")
+
 st.title("Adicionar itens para o guia:")
 
 # Create form elements
