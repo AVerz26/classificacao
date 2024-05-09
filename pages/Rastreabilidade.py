@@ -35,11 +35,11 @@ if st.button("Procurar"):
             st.write("Item: ",result[1])
             st.write("Produzido: ",result[2])
             st.write("Data/Hora produzida: ",result[8])
-            st.write("Data/Hora embarcada: ",result[9])
-            st.write("Nº Embarque: ", result[10])
-            st.write("Placa Veículo: ", result[11])
-            st.write("Nº Pedido: ", result[12])
-            st.write("Cliente: ", result[13])
+            st.write("Data/Hora embarcada: ",result[13])
+            st.write("Nº Embarque: ", result[14])
+            st.write("Placa Veículo: ", result[15])
+            st.write("Nº Pedido: ", result[16])
+            st.write("Cliente: ", result[17])
         else:
             st.warning("Etiqueta não encontrada.")
     else:
