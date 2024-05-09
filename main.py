@@ -34,10 +34,25 @@ def clear_csv():
     else:
         st.warning("No data to clear.")
 
+def load_items_with_description_from_excel(file_path, column_name_item, column_name_description):
+    # Carrega o arquivo Excel
+    df = pd.read_excel(file_path)
+    
+    # Concatena as colunas de itens e descrições
+    items_with_description = df[column_name_item] + " - " + df[column_name_description]
+    
+    return items_with_description.tolist()
+
+# Define o caminho do arquivo Excel
+excel_file_path = "Items.xlsx"
+
+# Carrega os itens e descrições do Excel
+items_with_description = load_items_with_description_from_excel(excel_file_path, "Item", "Descrição")
+
 st.title("Form to CSV")
 
 # Create form elements
-name = st.text_input("Enter your name:")
+name = st.selectbox("Escolher item: ", items_with_description)
 age = st.number_input("Enter your age:")
 email = st.text_input("Enter your email:")
 
