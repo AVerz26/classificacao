@@ -10,7 +10,7 @@ def save_to_csv(name, age, email):
     # Write values to CSV file
     with open(csv_file, mode='a', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([name, age, email])
+        writer.writerow([date, name, age, email])
 
 def load_csv_as_dataframe():
     # Define CSV file path
@@ -20,7 +20,7 @@ def load_csv_as_dataframe():
     if os.path.exists(csv_file):
         df = pd.read_csv(csv_file)
     else:
-        df = pd.DataFrame(columns=["Name", "Age", "Email"])  # Create empty DataFrame with specified column names
+        df = pd.DataFrame(columns=["Data", "Name", "Age", "Email"])  # Create empty DataFrame with specified column names
     return df
 
 def clear_csv():
@@ -52,13 +52,14 @@ items_with_description = load_items_with_description_from_excel(excel_file_path,
 st.title("Form to CSV")
 
 # Create form elements
+date = st.date_input("When's your birthday", value=None)
 name = st.selectbox("Escolher item: ", items_with_description)
 age = st.number_input("Quantidade:")
 email = st.text_input("Situação:")
 
 if st.button("Submit"):
     # Save values to CSV
-    save_to_csv(name, age, email)
+    save_to_csv(date, name, age, email)
     st.success("Dados salvos!")
 
 # Load CSV data and display as DataFrame
@@ -69,4 +70,4 @@ st.dataframe(df)
 # Button to clear CSV data
 if st.button("Limpar dados"):
     clear_csv()
-    save_to_csv("Item", "Quantidade", "Situação")
+    save_to_csv("Data", "Item", "Quantidade", "Situação")
