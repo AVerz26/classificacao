@@ -3,7 +3,7 @@ import streamlit as st
 st.sidebar.write("Links adicionais")
 st.sidebar.markdown("[Acompanhamento Esteiras Kajoo](https://esteiraskajoo.streamlit.app)")
 
-st.title("Controle de Produção")
+st.title("Controle e Acompanhamento da Produção")
 
 st.subheader("Páginas disponíveis para consulta:")
 st.page_link("main.py", label="Página de Início", icon="🏠")
