@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.sidebar.image("logo.png", use_column_width=True)
+#st.sidebar.image("logo.png", use_column_width=True)
 st.sidebar.write("Links adicionais")
 st.sidebar.markdown("[Acompanhamento Esteiras Kajoo](https://esteiraskajoo.streamlit.app)")
 
