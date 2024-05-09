@@ -29,6 +29,7 @@ hoje = hoje.strftime('%Y-%m-%d')
 df2 = df2[df2["Data"] == hoje]
 #st.write(df2)
 
+df2["Item"] = df2["Item"].str.replace(".", "").astype(int)
 contagem_itens = df2["Item"].value_counts().reset_index()
 
 # Renomear as colunas
