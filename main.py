@@ -1,6 +1,7 @@
 import streamlit as st
 import csv
 import pandas as pd
+import os
 
 def save_to_csv(name, age, email):
     # Define CSV file path
@@ -16,8 +17,22 @@ def load_csv_as_dataframe():
     csv_file = "data.csv"
 
     # Read CSV file into a DataFrame
-    df = pd.read_csv(csv_file)
+    if os.path.exists(csv_file):
+        df = pd.read_csv(csv_file)
+    else:
+        df = pd.DataFrame(columns=["Name", "Age", "Email"])  # Create empty DataFrame if CSV doesn't exist
     return df
+
+def clear_csv():
+    # Define CSV file path
+    csv_file = "data.csv"
+
+    # Check if CSV file exists, then delete it
+    if os.path.exists(csv_file):
+        os.remove(csv_file)
+        st.success("Data cleared successfully!")
+    else:
+        st.warning("No data to clear.")
 
 st.title("Form to CSV")
 
@@ -35,3 +50,7 @@ if st.button("Submit"):
 st.header("Data from CSV")
 df = load_csv_as_dataframe()
 st.write(df)
+
+# Button to clear CSV data
+if st.button("Clear Data"):
+    clear_csv()
