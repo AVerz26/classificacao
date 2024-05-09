@@ -13,7 +13,7 @@ def page_about():
 # Função para a página de contato
 def page_contact():
     st.title("Contato")
-    st.write("Esta é a página de contato.")
+    st.write("Esta é a página de contato1.")
 
 # Função principal para rotear as páginas
 
