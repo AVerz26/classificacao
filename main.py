@@ -67,7 +67,7 @@ st.header("Listagem do Guia de Produção:")
 df = load_csv_as_dataframe()
 #st.dataframe(df)
 
-edited_df = st.data_editor(df, num_rows="dynamic")
+edited_df = st.data_editor(df)
 
 # Button to clear CSV data
 if st.button("Limpar dados"):
