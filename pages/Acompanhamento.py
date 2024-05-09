@@ -42,7 +42,7 @@ filtered_df['Número do Item'] = filtered_df['Número do Item'].astype(str)
 filtered_df = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', right_on='Item', how='left')
 
 # Preencher a coluna "Produzido" com a contagem de itens correspondente
-filtered_df['Produzido'] = filtered_df['Quantidade'].fillna(0).astype(int)
+filtered_df['Produzido'] = contagem_itens['Quantidade'].fillna(0).astype(int)
 
 filtered_df.drop(['Item', 'Quantidade', 'Número do Item'], axis=1, inplace=True)
 
