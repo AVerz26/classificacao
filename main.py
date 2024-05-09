@@ -1,12 +1,30 @@
-from st_pages import Page, show_pages, add_page_title
+import streamlit as st
 
-# Optional -- adds the title and icon to the current page
-add_page_title()
+# Função para a página inicial
+def page_home():
+    st.title("Página Inicial")
+    st.write("Bem-vindo à página inicial!")
 
-# Specify what pages should be shown in the sidebar, and what their titles and icons
-# should be
-show_pages(
-    [
-        Page("Guia.py", "Guia de Produção", "🏠"),
-    ]
-)
+# Função para a página de sobre
+def page_about():
+    st.title("Sobre")
+    st.write("Esta é a página de informações sobre o aplicativo.")
+
+# Função para a página de contato
+def page_contact():
+    st.title("Contato")
+    st.write("Esta é a página de contato.")
+
+# Função principal para rotear as páginas
+
+st.sidebar.title("Navegação")
+selection = st.sidebar.radio("Ir para:", ["Página Inicial", "Sobre", "Contato"])
+
+    # Roteamento das páginas
+if selection == "Página Inicial":
+    page_home()
+elif selection == "Sobre":
+    page_about()
+elif selection == "Contato":
+    page_contact()
+
