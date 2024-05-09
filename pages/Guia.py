@@ -51,11 +51,16 @@ if authentication_status:
     
     # Exibir o DataFrame como uma tabela editável
     st.header("Listagem do Guia de Produção:")
-    edited_df = st.dataframe(df, editable=True)
+    for i in range(len(df)):
+        for col in df.columns:
+            if col == "Date":
+                df[col][i] = st.date_input(f"{col} {i}", value=pd.to_datetime(df[col][i]))
+            else:
+                df[col][i] = st.text_input(f"{col} {i}", value=df[col][i])
     
     # Botão para salvar as alterações
     if st.button("Salvar Alterações"):
-        save_dataframe_to_csv(edited_df, csv_file)
+        save_dataframe_to_csv(df, csv_file)
         st.success("Alterações salvas com sucesso!")
     
     # Botão para limpar os dados
