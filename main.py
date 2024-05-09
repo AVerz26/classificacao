@@ -54,3 +54,4 @@ st.dataframe(df)
 # Button to clear CSV data
 if st.button("Clear Data"):
     clear_csv()
+    save_to_csv("Name", "Age", "Email")
