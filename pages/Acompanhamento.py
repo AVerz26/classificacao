@@ -13,7 +13,7 @@ today = pd.Timestamp.today().date()  # Obtém a data de hoje
 filtered_df = df[df["Date"].dt.date == today]
 
 filtered_df["A produzir"] = filtered_df["Quantidade"] - filtered_df["Estoque Inicio"]
-filtered_df.drop(["Quantidade", "Inicio"], axis = 1)
+filtered_df.drop(["Quantidade", "Inicio"], axis = 0)
 
 
 # Exibe o DataFrame filtrado
