@@ -26,5 +26,6 @@ df2["Data"] = df2["Dt. Produção Imp."].dt.date
 
 # Filtrar apenas as linhas onde a data de produção é igual ao dia de hoje
 hoje = pd.Timestamp.now().date() - pd.Timedelta(days=1)
+st.write(hoje)
 df2 = df2[df2["Data"] == hoje]
 st.write(df2)
