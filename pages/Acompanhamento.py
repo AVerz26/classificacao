@@ -18,11 +18,11 @@ filtered_df["A produzir"] = filtered_df["Quantidade"] - filtered_df["Estoque Ini
 filtered_df = filtered_df.drop(["Quantidade", "Estoque Inicio"], axis = 1)
 # Exibe o DataFrame filtrado
 st.write(filtered_df)
+df2["Dt. Produção Imp."] = pd.to_datetime(df2["Dt. Produção Imp."])
 df2["Data"] = df2["Dt. Produção Imp."].dt.date
 st.write(df2.head())
 
-df2["Dt. Produção Imp."] = pd.to_datetime(df2["Dt. Produção Imp."])
-df2["Data"] = df2["Dt. Produção Imp."].dt.date
+
 
 # Filtrar apenas as linhas onde a data de produção é igual ao dia de hoje
 hoje = pd.Timestamp.now().date()
