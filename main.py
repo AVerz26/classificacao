@@ -1,13 +1,16 @@
 import streamlit as st
+import csv
 import pandas as pd
 import os
 
-def save_to_csv(df):
+def save_to_csv(name, age, email):
     # Define CSV file path
     csv_file = "data.csv"
 
-    # Save DataFrame to CSV file
-    df.to_csv(csv_file, index=False)
+    # Write values to CSV file
+    with open(csv_file, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([name, age, email])
 
 def load_csv_as_dataframe():
     # Define CSV file path
@@ -17,7 +20,7 @@ def load_csv_as_dataframe():
     if os.path.exists(csv_file):
         df = pd.read_csv(csv_file)
     else:
-        df = pd.DataFrame(columns=["Item", "Quantidade", "Prioridade"])  # Create empty DataFrame with specified column names
+        df = pd.DataFrame(columns=["Name", "Age", "Email"])  # Create empty DataFrame with specified column names
     return df
 
 def clear_csv():
@@ -31,19 +34,22 @@ def clear_csv():
     else:
         st.warning("No data to clear.")
 
-st.title("CSV Editor")
+st.title("Form to CSV")
 
-# Load CSV data into a DataFrame
+# Create form elements
+name = st.text_input("Enter your name:")
+age = st.number_input("Enter your age:")
+email = st.text_input("Enter your email:")
+
+if st.button("Submit"):
+    # Save values to CSV
+    save_to_csv(name, age, email)
+    st.success("Data saved successfully!")
+
+# Load CSV data and display as DataFrame
+st.header("Data from CSV")
 df = load_csv_as_dataframe()
-
-# Display DataFrame as editable table
-st.header("Edit CSV Data")
-edited_df = st.dataframe(df, editable=True)
-
-# Save changes to CSV file when user clicks a button
-if st.button("Save Changes"):
-    save_to_csv(edited_df)
-    st.success("Changes saved successfully!")
+st.write(df)
 
 # Button to clear CSV data
 if st.button("Clear Data"):
