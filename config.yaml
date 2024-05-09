@@ -1,0 +1,13 @@
+credentials:
+  usernames:
+    MTQ:
+      email: andreverzoto@gmail.com
+      name: Mantiqueira
+      password: MTQ102 # To be replaced with hashed password
+cookie:
+  expiry_days: 0
+  key: random_signature_key # Must be string
+  name: random_cookie_name
+preauthorized:
+  emails:
+  - andreverzoto@gmail.com
