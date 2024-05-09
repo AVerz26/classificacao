@@ -5,4 +5,4 @@ import os
 
 
 
-st.page_link("Guia.py", label="Guia", icon="🏠")
+st.page_link("Guia.py", label="Guia")
