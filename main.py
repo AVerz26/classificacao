@@ -49,7 +49,7 @@ if st.button("Submit"):
 # Load CSV data and display as DataFrame
 st.header("Data from CSV")
 df = load_csv_as_dataframe()
-st.write(df)
+st.dataframe(df)
 
 # Button to clear CSV data
 if st.button("Clear Data"):
