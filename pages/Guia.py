@@ -15,6 +15,15 @@ def save_to_csv(date, name, age, email):
         writer = csv.writer(file)
         writer.writerow([date, name, age, email])
 
+def save_to_csv_again(date, name, age, email):
+    # Define CSV file path
+    csv_file = "data.csv"
+
+    # Write values to CSV file
+    with open(csv_file, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([date, name, age, email])
+
 def load_csv_as_dataframe():
     # Define CSV file path
     csv_file = "data.csv"
@@ -89,6 +98,9 @@ if authentication_status:
     #st.dataframe(df)
     
     edited_df = st.data_editor(df)
+
+    if st.button("Salvar Alterações"):
+        save_to_csv_again(edited_df)
     
     # Button to clear CSV data
     if st.button("Limpar dados"):
