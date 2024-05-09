@@ -20,7 +20,7 @@ def load_csv_as_dataframe():
     if os.path.exists(csv_file):
         df = pd.read_csv(csv_file)
     else:
-        df = pd.DataFrame(columns=["Name", "Age", "Email"])  # Create empty DataFrame with specified column names
+        df = pd.DataFrame(columns=["Item", "Quantidade", "Prioridade"])  # Create empty DataFrame with specified column names
     return df
 
 def clear_csv():
@@ -37,9 +37,9 @@ def clear_csv():
 st.title("Form to CSV")
 
 # Create form elements
-name = st.text_input("Enter your name:")
-age = st.number_input("Enter your age:")
-email = st.text_input("Enter your email:")
+name = st.text_input("Item:")
+age = st.number_input("Quantidade:")
+email = st.text_input("Prioridade:")
 
 if st.button("Submit"):
     # Save values to CSV
