@@ -15,14 +15,12 @@ def save_to_csv(date, name, age, email):
         writer = csv.writer(file)
         writer.writerow([date, name, age, email])
 
-def save_to_csv_again(date, name, age, email):
+def save_to_csv_again(df):
     # Define CSV file path
     csv_file = "data.csv"
 
-    # Write values to CSV file
-    with open(csv_file, mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([date, name, age, email])
+    # Write DataFrame to CSV file
+    df.to_csv(csv_file, index=False)
 
 def load_csv_as_dataframe():
     # Define CSV file path
