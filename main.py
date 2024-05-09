@@ -52,7 +52,7 @@ items_with_description = load_items_with_description_from_excel(excel_file_path,
 st.title("Form to CSV")
 
 # Create form elements
-date = st.date_input("When's your birthday", value=None)
+date = st.date_input("When's your birthday", value=None, format="DD/MM/YYYY")
 name = st.selectbox("Escolher item: ", items_with_description)
 age = st.number_input("Quantidade:")
 email = st.text_input("Situação:")
