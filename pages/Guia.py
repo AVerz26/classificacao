@@ -2,6 +2,9 @@ import streamlit as st
 import csv
 import pandas as pd
 import os
+import yaml
+from yaml.loader import SafeLoader
+import streamlit_authenticator as stauth
 
 def save_to_csv(date, name, age, email):
     # Define CSV file path
@@ -52,27 +55,48 @@ items_with_description = load_items_with_description_from_excel(excel_file_path,
 st.sidebar.header("Links Úteis")
 st.sidebar.markdown("[:egg: Rastreabilidade de Ovos](https://esteiraskajoo.streamlit.app/)")
 
-st.title("Adicionar itens para o guia:")
+with open('config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
 
-# Create form elements
-date = st.date_input("Data:", value=None, format="DD/MM/YYYY")
-name = st.selectbox("Escolher item: ", items_with_description)
-age = st.number_input("Quantidade:")
-email = st.text_input("Situação:")
+authenticator = Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['preauthorized']
+)
 
-if st.button("Enviar"):
-    # Save values to CSV
-    save_to_csv(date, name, age, email)
-    st.success("Dados salvos!")
+name, authentication_status, username = authenticator.login('Login', 'main')
 
-# Load CSV data and display as DataFrame
-st.header("Listagem do Guia de Produção:")
-df = load_csv_as_dataframe()
-#st.dataframe(df)
+if authentication_status:
+    authenticator.logout('Logout', 'main')
+    st.title("Adicionar itens para o guia:")
+    
+    # Create form elements
+    date = st.date_input("Data:", value=None, format="DD/MM/YYYY")
+    name = st.selectbox("Escolher item: ", items_with_description)
+    age = st.number_input("Quantidade:")
+    email = st.text_input("Situação:")
+    
+    if st.button("Enviar"):
+        # Save values to CSV
+        save_to_csv(date, name, age, email)
+        st.success("Dados salvos!")
+    
+    # Load CSV data and display as DataFrame
+    st.header("Listagem do Guia de Produção:")
+    df = load_csv_as_dataframe()
+    #st.dataframe(df)
+    
+    edited_df = st.data_editor(df)
+    
+    # Button to clear CSV data
+    if st.button("Limpar dados"):
+        clear_csv()
+        save_to_csv("Date", "Item", "Quantidade", "Situação")
+elif authentication_status == False:
+    st.error('Username/password is incorrect')
+elif authentication_status == None:
+    st.warning('Please enter your username and password')
 
-edited_df = st.data_editor(df)
 
-# Button to clear CSV data
-if st.button("Limpar dados"):
-    clear_csv()
-    save_to_csv("Date", "Item", "Quantidade", "Situação")
