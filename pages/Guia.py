@@ -6,19 +6,11 @@ import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 
-def save_to_csv(date, name, age, email):
-    # Define CSV file path
-    csv_file = "data.csv"
+def save_to_csv(df, csv_file):
+    # Write DataFrame to CSV file
+    df.to_csv(csv_file, index=False)
 
-    # Write values to CSV file
-    with open(csv_file, mode='a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([date, name, age, email])
-
-def load_csv_as_dataframe():
-    # Define CSV file path
-    csv_file = "data.csv"
-
+def load_csv_as_dataframe(csv_file):
     # Read CSV file into a DataFrame
     if os.path.exists(csv_file):
         df = pd.read_csv(csv_file)
@@ -26,10 +18,7 @@ def load_csv_as_dataframe():
         df = pd.DataFrame(columns=["Date", "Name", "Age", "Email"])  # Create empty DataFrame with specified column names
     return df
 
-def clear_csv():
-    # Define CSV file path
-    csv_file = "data.csv"
-
+def clear_csv(csv_file):
     # Check if CSV file exists, then delete it
     if os.path.exists(csv_file):
         os.remove(csv_file)
@@ -72,31 +61,35 @@ if authentication_status:
     authenticator.logout('Logout', 'main')
     st.title("Adicionar itens para o guia:")
     
+    # Carrega o arquivo CSV
+    csv_file = "data.csv"
+    df = load_csv_as_dataframe(csv_file)
+    
     # Create form elements
-    date = st.date_input("Data:", value=None, format="DD/MM/YYYY")
+    date = st.date_input("Data:")
     name = st.selectbox("Escolher item: ", items_with_description)
     age = st.number_input("Quantidade:")
     email = st.text_input("Situação:")
     
     if st.button("Enviar"):
-        # Save values to CSV
-        save_to_csv(date, name, age, email)
+        # Adiciona uma nova linha ao DataFrame com os valores inseridos
+        new_row = {"Date": date, "Name": name, "Age": age, "Email": email}
+        df = df.append(new_row, ignore_index=True)
+        
+        # Salva o DataFrame modificado de volta para o arquivo CSV
+        save_to_csv(df, csv_file)
+        
         st.success("Dados salvos!")
     
-    # Load CSV data and display as DataFrame
+    # Exibe o DataFrame como uma tabela editável
     st.header("Listagem do Guia de Produção:")
-    df = load_csv_as_dataframe()
-    #st.dataframe(df)
-    
-    edited_df = st.data_editor(df)
+    edited_df = st.dataframe(df, editable=True)
     
     # Button to clear CSV data
     if st.button("Limpar dados"):
-        clear_csv()
-        save_to_csv("Date", "Item", "Quantidade", "Situação")
+        clear_csv(csv_file)
+        st.info("Dados excluídos com sucesso.")
 elif authentication_status == False:
     st.error('Username/password is incorrect')
 elif authentication_status == None:
     st.warning('Please enter your username and password')
-
-
