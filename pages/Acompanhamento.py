@@ -30,7 +30,6 @@ today = pd.Timestamp.today().date()  # Obtém a data de hoje
 filtered_df = df[df["Date"].dt.date == today]
 filtered_df["A produzir"] = filtered_df["Quantidade"] - filtered_df["Estoque Inicio"]
 filtered_df = filtered_df.drop(["Quantidade", "Estoque Inicio"], axis = 1)
-# Exibe o DataFrame filtrado
 
 
 filtered_df[['Número do Item', 'Descrição']] = filtered_df['Item'].str.split(' - ', expand=True)
@@ -39,7 +38,7 @@ filtered_df[['Número do Item', 'Descrição']] = filtered_df['Item'].str.split(
 filtered_df['Número do Item'] = filtered_df['Número do Item'].astype(str)
 
 # Fazer um merge entre df12 e contagem_itens usando o número do item como chave de junção
-filtered_df = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', right_on='Item', how='left')
+filtered_df = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', right_on='Item', how='right')
 
 # Preencher a coluna "Produzido" com a contagem de itens correspondente
 filtered_df['Produzido'] = contagem_itens['Quantidade'].fillna(0).astype(int)
