@@ -19,6 +19,7 @@ filtered_df = filtered_df.drop(["Quantidade", "Estoque Inicio"], axis = 1)
 # Exibe o DataFrame filtrado
 st.write(filtered_df)
 
+st.write(df2.head())
 
 df2["Dt. Produção"] = pd.to_datetime(df2["Dt. Produção"])
 df2["Data"] = df2["Dt. Produção"].dt.date
