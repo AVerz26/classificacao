@@ -21,6 +21,7 @@ st.write(filtered_df)
 
 
 df2["Dt. Produção"] = pd.to_datetime(df2["Dt. Produção"])
+df2["Data"] = df2["Dt. Produção"].dt.date
 
 # Filtrar apenas as linhas onde a data de produção é igual ao dia de hoje
 hoje = pd.Timestamp.now().date()
