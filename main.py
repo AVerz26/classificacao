@@ -1,30 +1,78 @@
 import streamlit as st
+import csv
+import pandas as pd
+import os
 
-# Função para a página inicial
-def page_home():
-    st.title("Página Inicial")
-    st.write("Bem-vindo à página inicial!")
+def save_to_csv(date, name, age, email):
+    # Define CSV file path
+    csv_file = "data.csv"
 
-# Função para a página de sobre
-def page_about():
-    st.title("Sobre")
-    st.write("Esta é a página de informações sobre o aplicativo.")
+    # Write values to CSV file
+    with open(csv_file, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([date, name, age, email])
 
-# Função para a página de contato
-def page_contact():
-    st.title("Contato")
-    st.write("Esta é a página de contato1.")
+def load_csv_as_dataframe():
+    # Define CSV file path
+    csv_file = "data.csv"
 
-# Função principal para rotear as páginas
+    # Read CSV file into a DataFrame
+    if os.path.exists(csv_file):
+        df = pd.read_csv(csv_file)
+    else:
+        df = pd.DataFrame(columns=["Date", "Name", "Age", "Email"])  # Create empty DataFrame with specified column names
+    return df
 
-st.sidebar.title("Navegação")
-selection = st.sidebar.radio("Ir para:", ["Página Inicial", "Sobre", "Contato"])
+def clear_csv():
+    # Define CSV file path
+    csv_file = "data.csv"
 
-    # Roteamento das páginas
-if selection == "Página Inicial":
-    page_home()
-elif selection == "Sobre":
-    page_about()
-elif selection == "Contato":
-    page_contact()
+    # Check if CSV file exists, then delete it
+    if os.path.exists(csv_file):
+        os.remove(csv_file)
+        st.success("Data cleared successfully!")
+    else:
+        st.warning("No data to clear.")
 
+def load_items_with_description_from_excel(file_path, column_name_item, column_name_description):
+    # Carrega o arquivo Excel
+    df = pd.read_excel(file_path)
+    
+    # Convertendo os dados das colunas para string e depois concatenando
+    items_with_description = df[column_name_item].astype(str) + " - " + df[column_name_description].astype(str)
+    
+    return items_with_description.tolist()
+
+# Define o caminho do arquivo Excel
+excel_file_path = "Items.xlsx"
+
+# Carrega os itens e descrições do Excel
+items_with_description = load_items_with_description_from_excel(excel_file_path, "Item", "Descrição")
+
+st.sidebar.header("Links Úteis")
+st.sidebar.markdown("[:egg: Rastreabilidade de Ovos](https://esteiraskajoo.streamlit.app/)")
+
+st.title("Adicionar itens para o guia:")
+
+# Create form elements
+date = st.date_input("Data:", value=None, format="DD/MM/YYYY")
+name = st.selectbox("Escolher item: ", items_with_description)
+age = st.number_input("Quantidade:")
+email = st.text_input("Situação:")
+
+if st.button("Enviar"):
+    # Save values to CSV
+    save_to_csv(date, name, age, email)
+    st.success("Dados salvos!")
+
+# Load CSV data and display as DataFrame
+st.header("Listagem do Guia de Produção:")
+df = load_csv_as_dataframe()
+#st.dataframe(df)
+
+edited_df = st.data_editor(df)
+
+# Button to clear CSV data
+if st.button("Limpar dados"):
+    clear_csv()
+    save_to_csv("Date", "Item", "Quantidade", "Situação")
