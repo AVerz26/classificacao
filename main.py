@@ -49,21 +49,21 @@ excel_file_path = "Items.xlsx"
 # Carrega os itens e descrições do Excel
 items_with_description = load_items_with_description_from_excel(excel_file_path, "Item", "Descrição")
 
-st.title("Form to CSV")
+st.title("Adicionar itens para o guia:")
 
 # Create form elements
-date = st.date_input("When's your birthday", value=None, format="DD/MM/YYYY")
+date = st.date_input("Data:", value=None, format="DD/MM/YYYY")
 name = st.selectbox("Escolher item: ", items_with_description)
 age = st.number_input("Quantidade:")
 email = st.text_input("Situação:")
 
-if st.button("Submit"):
+if st.button("Enviar"):
     # Save values to CSV
     save_to_csv(date, name, age, email)
     st.success("Dados salvos!")
 
 # Load CSV data and display as DataFrame
-st.header("Data from CSV")
+st.header("Listagem do Guia de Produção:")
 df = load_csv_as_dataframe()
 st.dataframe(df)
 
