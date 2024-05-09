@@ -32,7 +32,10 @@ if st.button("Procurar"):
         if result is not None:
             st.success("Etiqueta encontrada!")
             st.write("Informações:")
-            st.write(result)
+            st.write("Item: ",result[1])
+            st.write("Produzido: ",result[2])
+            st.write("Data/Hora produzida: ",result[8])
+            st.write("Data/Hora embarcada: ",result[9])
         else:
             st.warning("Etiqueta não encontrada.")
     else:
