@@ -21,10 +21,11 @@ st.write(filtered_df)
 
 st.write(df2.head())
 
-df2["Data"] = pd.to_datetime(df2["Data"]).dt.strftime('%Y-%m-%d')
+df2["Data"] = pd.to_datetime(df2["Data"]).dt.date
 
 # Filtrar apenas as linhas onde a data de produção é igual ao dia de hoje
 hoje = pd.Timestamp.now().date() - pd.Timedelta(days=1)
+hoje = hoje.strftime('%Y-%d-%m')
 st.write(df2)
 st.write(hoje)
 df2 = df2[df2["Data"] == hoje]
