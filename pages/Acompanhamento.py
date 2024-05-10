@@ -38,7 +38,7 @@ filtered_df[['Número do Item', 'Descrição']] = filtered_df['Item'].str.split(
 
 # Converter o número do item para o tipo de dados string (str)
 filtered_df['Número do Item'] = filtered_df['Número do Item'].astype(str)
-x = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', right_on='Item', how='right')
+x = pd.merge(filtered_df, items, left_on='Número do Item', right_on='Item', how='right')
 # Fazer um merge entre df12 e contagem_itens usando o número do item como chave de junção
 filtered_df = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', right_on='Item', how='right')
 
@@ -92,4 +92,4 @@ st.data_editor(
     hide_index=True,
 )
 
-
+st.write(x)
