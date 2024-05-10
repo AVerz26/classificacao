@@ -74,7 +74,8 @@ filtered_df.drop(['Descrição'], axis=1, inplace=True)
 
 # ----------------------------------- SITE ----------------------------------- #
 
-ultimo_valor_data = df2['Dt. Produção'].iloc[-1]
+x = x.sort_values(by='Dt. Produção', ascending=False)
+ultimo_valor_data = x['Dt. Produção'].iloc[-1]
 
 col1, col2 = st.columns(2)
 with col1:
