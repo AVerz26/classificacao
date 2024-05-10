@@ -73,6 +73,6 @@ st.data_editor(
 )
 
 x = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', right_on='Item', how='left')
-
+#
 st.write(x)
 
