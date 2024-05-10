@@ -60,6 +60,7 @@ colunas = filtered_df.columns.tolist()
 nova_ordem_colunas = [colunas[2]] + colunas[:2] + colunas[3:]
 filtered_df = filtered_df[nova_ordem_colunas]
 filtered_df.drop(['Descrição'], axis=1, inplace=True)
+filtered_df = filtered_df.replace(to_replace='*', value=0, regex=True)
 
 st.data_editor(
     filtered_df,
