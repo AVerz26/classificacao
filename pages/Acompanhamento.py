@@ -56,7 +56,7 @@ filtered_df.drop(['Item_y', 'Quantidade', 'Número do Item', 'Descrição', 'Sit
 
 st.data_editor(
     filtered_df,
-    width = 800,
+    width = 1300,
     column_config={
         "Percentual": st.column_config.ProgressColumn(
             "Percentual",
