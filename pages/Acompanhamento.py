@@ -84,7 +84,7 @@ with col2:
     st.markdown("<div style='text-align: left'><small><em>(Última atualização: {} )</em></small></div>".format(ultimo_valor_data), unsafe_allow_html=True)
 
 porcentagem_formatada = "{:.1f}".format(porcentagem_embalado)
-st.markdown("<div style='text-align: center'Embalado: {}% </div>".format(porcentagem_formatada), unsafe_allow_html=True)
+st.markdown("<div style='text-align: center'><em>(Embalado: {}% )</em></div>".format(porcentagem_formatada), unsafe_allow_html=True)
 
 st.data_editor(
     filtered_df,
