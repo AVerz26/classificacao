@@ -11,7 +11,7 @@ itens = "Items.xlsx"
 df = pd.read_csv(csv_file)
 df2 = pd.read_excel(excel_file)
 items = pd.read_excel(itens)
-items['Codigo'] = items['Item'].astype(str)
+items['Cod'] = items['Item'].astype(str)
 # --------------------------- CONTAGEM ---------------------------- #
 df2["Dt. Produção Imp."] = pd.to_datetime(df2["Dt. Produção Imp."])
 df2["Data"] = df2["Dt. Produção Imp."].dt.strftime('%Y-%d-%m')
