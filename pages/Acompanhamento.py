@@ -56,6 +56,9 @@ filtered_df.loc[filtered_df['Faltantes'] > 0, 'Faltantes'] = 0
 filtered_df.drop(['Item_x', 'Date', 'Quantidade', 'Número do Item', 'Situação'], axis=1, inplace=True)
 #filtered_df.dropna(inplace=True)
 
+colunas = filtered_df.columns.tolist()
+nova_ordem_colunas = [colunas[2]] + colunas[:2] + colunas[3:]
+filtered_df = filtered_df[nova_ordem_colunas]
 
 st.data_editor(
     filtered_df,
