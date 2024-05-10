@@ -50,7 +50,7 @@ filtered_df = filtered_df.sort_values(by='Percentual', ascending=False)
 
 
 
-filtered_df.drop(['Item_y', 'Quantidade', 'Número do Item', 'Descrição', 'Situação'], axis=1, inplace=True)
+filtered_df.drop(['Item_y', 'Date', 'Quantidade', 'Número do Item', 'Descrição', 'Situação'], axis=1, inplace=True)
 #filtered_df.dropna(inplace=True)
 
 
