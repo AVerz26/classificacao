@@ -64,7 +64,7 @@ st.data_editor(
         "Percentual": st.column_config.ProgressColumn(
             "Percentual",
             help="Cumprido",
-            format="$%f",
+            format="%.1f",
             min_value=0,
             max_value=100,
         ),
