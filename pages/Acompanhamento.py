@@ -88,6 +88,8 @@ with col2:
 porcentagem_formatada = "{:.1f}".format(porcentagem_embalado)
 st.markdown("<div style='text-align: center'><em>(Embalado: {}% )</em></div>".format(porcentagem_formatada), unsafe_allow_html=True)
 
+filtered_df['Status'] = ""
+
 st.data_editor(
     filtered_df,
     width = 1300,
