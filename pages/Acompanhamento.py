@@ -44,7 +44,8 @@ filtered_df = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', r
 
 # Preencher a coluna "Produzido" com a contagem de itens correspondente
 filtered_df['Produzido'] = contagem_itens['Quantidade'].fillna(0).astype(int)
-
+filtered_df['Produzido'].fillna(0, inplace=True)
+filtered_df['A produzir'].fillna(0, inplace=True)
 filtered_df['Percentual'] = filtered_df['Produzido'] / filtered_df['A produzir']
 filtered_df['Percentual'] = filtered_df.apply(lambda row: min(row['Percentual'], 1) * 100, axis=1)
 #filtered_df['Percentual'] = filtered_df.apply(lambda row: f"{min(row['Percentual'], 1) * 100:.1f}%", axis=1)
@@ -60,8 +61,7 @@ colunas = filtered_df.columns.tolist()
 nova_ordem_colunas = [colunas[2]] + colunas[:2] + colunas[3:]
 filtered_df = filtered_df[nova_ordem_colunas]
 filtered_df.drop(['Descrição'], axis=1, inplace=True)
-filtered_df['Produzido'].fillna(0, inplace=True)
-filtered_df['A produzir'].fillna(0, inplace=True)
+
 
 st.data_editor(
     filtered_df,
