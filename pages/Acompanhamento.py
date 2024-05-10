@@ -79,7 +79,7 @@ with col1:
 with col2:
     st.markdown("<div style='text-align: left'><small><em>(Última atualização: {} )</em></small></div>".format(ultimo_valor_data), unsafe_allow_html=True)
 
-
+st.write(x)
 
 st.data_editor(
     filtered_df,
