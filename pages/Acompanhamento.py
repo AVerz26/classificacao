@@ -84,7 +84,7 @@ with col2:
 st.data_editor(
     filtered_df,
     width = 1300,
-    height = 400,
+    height = 800,
     column_config={
         "Percentual": st.column_config.ProgressColumn(
             "Percentual",
