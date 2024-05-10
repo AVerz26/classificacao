@@ -2,6 +2,13 @@ import pandas as pd
 import streamlit as st
 import os
 
+def save_to_csv_again(df):
+    # Define CSV file path
+    csv_file = "date.csv"
+
+    # Write DataFrame to CSV file
+    df.to_csv(csv_file, index=False)
+
 st.set_page_config(layout="wide")
 #Importação dos dados
 csv_file = "data.csv"
@@ -91,7 +98,7 @@ st.markdown("<div style='text-align: center'><em>(Embalado: {}% )</em></div>".fo
 
 filtered_df['Status'] = ""
 
-filtered_df = st.data_editor(
+m = st.data_editor(
     filtered_df,
     width = 1300,
     height = 800,
@@ -107,6 +114,6 @@ filtered_df = st.data_editor(
     hide_index=True,
 )
 
-if st.button('Salvar Alterações'):
-    st.session_state["button_pressed"] = True
+if st.button("Salvar Alterações"):
+    save_to_csv_again(m)
 
