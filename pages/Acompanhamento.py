@@ -13,7 +13,7 @@ df2 = pd.read_excel(excel_file)
 df2["Dt. Produção Imp."] = pd.to_datetime(df2["Dt. Produção Imp."])
 df2["Data"] = df2["Dt. Produção Imp."].dt.strftime('%Y-%d-%m')
 
-hoje = pd.Timestamp.now().date() - pd.Timedelta(days=2)
+hoje = pd.Timestamp.now().date()
 hoje = hoje.strftime('%Y-%m-%d')
 df2 = df2[df2["Data"] == hoje]
 #st.write(df2)
@@ -26,7 +26,7 @@ contagem_itens.columns = ["Item", "Quantidade"]
 
 df["Date"] = pd.to_datetime(df["Date"])
 # Filtra o DataFrame para o dia de hoje
-today = pd.Timestamp.today().date() - pd.Timedelta(days=1)  # Obtém a data de hoje
+today = pd.Timestamp.today().date()  # Obtém a data de hoje
 filtered_df = df[df["Date"].dt.date == today]
 filtered_df["A produzir"] = filtered_df["Quantidade"] - filtered_df["Estoque Inicio"]
 filtered_df = filtered_df.drop(["Quantidade", "Estoque Inicio"], axis = 1)
