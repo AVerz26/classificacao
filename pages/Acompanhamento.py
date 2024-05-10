@@ -104,5 +104,5 @@ st.data_editor(
     hide_index=True,
 )
 
-st.write(x)
+#st.write(x)
 
