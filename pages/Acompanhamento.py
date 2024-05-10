@@ -44,6 +44,7 @@ filtered_df = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', r
 filtered_df['Produzido'] = contagem_itens['Quantidade'].fillna(0).astype(int)
 
 filtered_df['Percentual'] = filtered_df['Produzido'] / filtered_df['A produzir']
+filtered_df['Percentual'] = filtered_df.apply(lambda row: min(row['Percentual'], 1) * 100, axis=1)
 
 
 filtered_df.drop(['Item_y', 'Quantidade', 'Número do Item', 'Descrição', 'Situação'], axis=1, inplace=True)
