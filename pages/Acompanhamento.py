@@ -54,10 +54,6 @@ filtered_df.drop(['Item_y', 'Quantidade', 'Número do Item', 'Descrição', 'Sit
 #filtered_df.dropna(inplace=True)
 
 
-
-st.dataframe(filtered_df)
-
-
 st.data_editor(
     filtered_df,
     column_config={
