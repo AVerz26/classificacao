@@ -43,7 +43,8 @@ filtered_df = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', r
 # Preencher a coluna "Produzido" com a contagem de itens correspondente
 filtered_df['Produzido'] = contagem_itens['Quantidade'].fillna(0).astype(int)
 
-filtered_df['Percentual'] = filtered_df['Produzido']/filtered_df['A produzir']
+filtered_df['Percentual'] = filtered_df['Produzido'] / filtered_df['A produzir']
+
 
 filtered_df.drop(['Item_y', 'Quantidade', 'Número do Item', 'Descrição'], axis=1, inplace=True)
 filtered_df.dropna(inplace=True)
