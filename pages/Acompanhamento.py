@@ -5,10 +5,12 @@ import os
 #Importação dos dados
 csv_file = "data.csv"
 excel_file = "BD_PROD.xlsx"
+itens = "Items.xlsx"
 
 #Dataframes
 df = pd.read_csv(csv_file)
 df2 = pd.read_excel(excel_file)
+items = pd.read_excel(itens)
 # --------------------------- CONTAGEM ---------------------------- #
 df2["Dt. Produção Imp."] = pd.to_datetime(df2["Dt. Produção Imp."])
 df2["Data"] = df2["Dt. Produção Imp."].dt.strftime('%Y-%d-%m')
@@ -69,3 +71,8 @@ st.data_editor(
     },
     hide_index=True,
 )
+
+x = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', right_on='Item', how='left')
+
+st.write(x)
+
