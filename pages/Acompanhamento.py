@@ -62,6 +62,8 @@ contagem_ind = contagem_tipos.get('INDUSTRIA', 0)
 porcentagem_industria = (contagem_ind / len(x['Tipo'])) * 100
 contagem_c = contagem_tipos.get('CINTA', 0)
 porcentagem_cinta = (contagem_c / len(x['Tipo'])) * 100
+contagem_b = contagem_tipos.get('BALDE', 0)
+porcentagem_balde = (contagem_b / len(x['Tipo'])) * 100
 
 # Fazer um merge entre df12 e contagem_itens usando o número do item como chave de junção
 filtered_df = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', right_on='Item', how='right')
@@ -103,16 +105,19 @@ porcentagem_formatada = "{:.1f}".format(porcentagem_embalado)
 porcentagem_formatada2 = "{:.1f}".format(porcentagem_granel)
 porcentagem_formatada3 = "{:.1f}".format(porcentagem_industria)
 porcentagem_formatada4 = "{:.1f}".format(porcentagem_cinta)
+porcentagem_formatada5 = "{:.1f}".format(porcentagem_balde)
 
-colu1, colu2, colu3, colu4 = st.columns(4)
+colu1, colu2, colu3, colu4, colu5 = st.columns(5)
 with colu1:
     st.markdown("<div style='text-align: center'><em>(Embalado: {}% )</em></div>".format(porcentagem_formatada), unsafe_allow_html=True)
 with colu2:
     st.markdown("<div style='text-align: center'><em>(Granel: {}% )</em></div>".format(porcentagem_formatada2), unsafe_allow_html=True)
-with colu3:
-    st.markdown("<div style='text-align: center'><em>(Industria: {}% )</em></div>".format(porcentagem_formatada3), unsafe_allow_html=True)
 with colu4:
+    st.markdown("<div style='text-align: center'><em>(Industria: {}% )</em></div>".format(porcentagem_formatada3), unsafe_allow_html=True)
+with colu3:
     st.markdown("<div style='text-align: center'><em>(Cinta: {}% )</em></div>".format(porcentagem_formatada4), unsafe_allow_html=True)
+with colu5:
+    st.markdown("<div style='text-align: center'><em>(Balde: {}% )</em></div>".format(porcentagem_formatada5), unsafe_allow_html=True)
 
 
 filtered_df['Status'] = ""
