@@ -72,7 +72,10 @@ st.data_editor(
     hide_index=True,
 )
 
+colunas = x.columns.tolist()
 
-#
+# Move a terceira coluna para a primeira posição
+nova_ordem_colunas = [colunas[2]] + colunas[:2] + colunas[3:]
+
 st.write(x)
 
