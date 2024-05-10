@@ -44,6 +44,10 @@ filtered_df['Número do Item'] = filtered_df['Número do Item'].astype(str)
 x = pd.merge(items, df2, left_on='Item', right_on='Item', how='left')
 soma_conv = x['Conv'].sum()
 
+contagem_tipos = x['Tipo'].value_counts()
+contagem_embalado = contagem_tipos.get('EMBALADO', 0)
+porcentagem_embalado = (contagem_embalado / len(x['Tipo'])) * 100
+
 # Fazer um merge entre df12 e contagem_itens usando o número do item como chave de junção
 filtered_df = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', right_on='Item', how='right')
 
@@ -79,7 +83,8 @@ with col1:
 with col2:
     st.markdown("<div style='text-align: left'><small><em>(Última atualização: {} )</em></small></div>".format(ultimo_valor_data), unsafe_allow_html=True)
 
-st.write(x)
+porcentagem_formatada = "{:.1f}".format(porcentagem_embalado)
+st.markdown("<div style='text-align: left'><small><em>(Embalado: {}% )</em></small></div>".format(porcentagem_formatada), unsafe_allow_html=True)
 
 st.data_editor(
     filtered_df,
