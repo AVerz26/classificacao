@@ -53,4 +53,11 @@ filtered_df = filtered_df.sort_values(by='Percentual', ascending=False)
 filtered_df.drop(['Item_y', 'Quantidade', 'Número do Item', 'Descrição', 'Situação'], axis=1, inplace=True)
 #filtered_df.dropna(inplace=True)
 
+def progress_bar(percentual):
+    return st.progress(percentual)
+
+# Adiciona uma coluna com barras de progresso ao DataFrame
+filtered_df['Barra de Progresso'] = filtered_df['Percentual'].apply(progress_bar)
+
+
 st.dataframe(filtered_df)
