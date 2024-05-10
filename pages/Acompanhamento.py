@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import os
 
+st.set_page_config(layout="wide")
 #Importação dos dados
 csv_file = "data.csv"
 excel_file = "BD_PROD.xlsx"
@@ -106,5 +107,6 @@ st.data_editor(
     hide_index=True,
 )
 
-#st.write(x)
+if st.button('Salvar Alterações'):
+    st.session_state["button_pressed"] = True
 
