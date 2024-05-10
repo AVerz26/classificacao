@@ -49,4 +49,4 @@ filtered_df['Percentual'] = filtered_df['Produzido'] / filtered_df['A produzir']
 filtered_df.drop(['Item_y', 'Quantidade', 'Número do Item', 'Descrição'], axis=1, inplace=True)
 filtered_df.dropna(inplace=True)
 
-st.write(filtered_df)
+st.dataframe(filtered_df)
