@@ -74,7 +74,7 @@ ultimo_valor_data = df2['Dt. Produção'].iloc[-1]
 
 col1, col2 = st.columns(2)
 with col1:
-    st.markdown("<div style='text-align: center;'>Produção ACA: {} caixas </div>".format(int(soma_conv)), unsafe_allow_html=True)
+    st.markdown("<div style='text-align: right;'>Produção ACA: {} caixas </div>".format(int(soma_conv)), unsafe_allow_html=True)
 
 # Centralize o conteúdo de col2
 with col2:
