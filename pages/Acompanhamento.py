@@ -44,7 +44,7 @@ filtered_df['Número do Item'] = filtered_df['Número do Item'].astype(str)
 x = pd.merge(items, df2, left_on='Item', right_on='Item', how='left')
 x = x.loc[x['Origem'].isin(["PVA-MOBA-1", "PVA-MOBA-2"])]
 soma_conv = x['Conv'].sum()
-
+#
 contagem_tipos = x['Tipo'].value_counts()
 contagem_embalado = contagem_tipos.get('EMBALADO', 0)
 porcentagem_embalado = (contagem_embalado / len(x['Tipo'])) * 100
