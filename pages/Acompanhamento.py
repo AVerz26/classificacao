@@ -66,7 +66,7 @@ filtered_df.drop(['Descrição'], axis=1, inplace=True)
 
 #st.markdown("<div style='text-align: center;'>Produção ACA: {} caixas </div>"format(int(sum(max(dados_filtrados[column]) for column in dados_filtrados.columns[1:9])/360)), unsafe_allow_html=True)
 ultimo_valor_data = df2['Dt. Produção'].iloc[-1]
-
+ultimo_valor_data = ultimo_valor_data.strftime("%Y-%m-%d %H:%M")
 col1, col2 = st.columns(2)
 with col1:
     st.markdown("<div style='text-align: center;'>Produção ACA:  caixas </div>", unsafe_allow_html=True)
