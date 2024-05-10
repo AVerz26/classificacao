@@ -103,11 +103,11 @@ porcentagem_formatada3 = "{:.1f}".format(porcentagem_industria)
 
 colu1, colu2, colu3 = st.columns(3)
 with colu1:
-    st.markdown("<div style='text-align: center'><em>(Embalado: {}% )</em></div>".format(porcentagem_formatada), unsafe_allow_html=True)
+    st.markdown("<div style='text-align: right'><em>(Embalado: {}% )</em></div>".format(porcentagem_formatada), unsafe_allow_html=True)
 with colu2:
     st.markdown("<div style='text-align: center'><em>(Granel: {}% )</em></div>".format(porcentagem_formatada2), unsafe_allow_html=True)
 with colu3:
-    st.markdown("<div style='text-align: center'><em>(Industria: {}% )</em></div>".format(porcentagem_formatada3), unsafe_allow_html=True)
+    st.markdown("<div style='text-align: left'><em>(Industria: {}% )</em></div>".format(porcentagem_formatada3), unsafe_allow_html=True)
 
 filtered_df['Status'] = ""
 
