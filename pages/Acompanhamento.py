@@ -91,7 +91,7 @@ st.markdown("<div style='text-align: center'><em>(Embalado: {}% )</em></div>".fo
 
 filtered_df['Status'] = ""
 
-st.data_editor(
+filtered_df = st.data_editor(
     filtered_df,
     width = 1300,
     height = 800,
