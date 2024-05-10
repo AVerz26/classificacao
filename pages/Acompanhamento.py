@@ -13,7 +13,7 @@ df2 = pd.read_excel(excel_file)
 df2["Dt. Produção Imp."] = pd.to_datetime(df2["Dt. Produção Imp."])
 df2["Data"] = df2["Dt. Produção Imp."].dt.strftime('%Y-%d-%m')
 
-hoje = pd.Timestamp.now().date() - pd.Timedelta(days=1)
+hoje = pd.Timestamp.now().date() - pd.Timedelta(days=2)
 hoje = hoje.strftime('%Y-%m-%d')
 df2 = df2[df2["Data"] == hoje]
 #st.write(df2)
