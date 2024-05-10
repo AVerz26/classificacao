@@ -42,7 +42,7 @@ filtered_df['Número do Item'] = filtered_df['Número do Item'].astype(str)
 
 
 x = pd.merge(items, df2, left_on='Item', right_on='Item', how='left')
-
+soma_conv = x['Conv'].sum()
 
 # Fazer um merge entre df12 e contagem_itens usando o número do item como chave de junção
 filtered_df = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', right_on='Item', how='right')
@@ -74,7 +74,7 @@ ultimo_valor_data = df2['Dt. Produção'].iloc[-1]
 
 col1, col2 = st.columns(2)
 with col1:
-    st.markdown("<div style='text-align: center;'>Produção ACA:  caixas </div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: center;'>Produção ACA: {} caixas </div>".format(int(soma_conv)), unsafe_allow_html=True)
 
 # Centralize o conteúdo de col2
 with col2:
@@ -97,4 +97,3 @@ st.data_editor(
     hide_index=True,
 )
 
-st.write(x)
