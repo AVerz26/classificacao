@@ -99,7 +99,7 @@ with col2:
 
 porcentagem_formatada = "{:.1f}".format(porcentagem_embalado)
 porcentagem_formatada2 = "{:.1f}".format(porcentagem_granel)
-porcentagem_formatada3 = "{:.1f}".format(porcentagem_eindustria)
+porcentagem_formatada3 = "{:.1f}".format(porcentagem_industria)
 
 colu1, colu2, colu3 = st.columns(3)
 with colu1:
