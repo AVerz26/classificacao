@@ -27,7 +27,7 @@ df2["Data"] = df2["Dt. Produção Imp."].dt.strftime('%Y-%d-%m')
 hoje = pd.Timestamp.now().date()
 hoje = hoje.strftime('%Y-%m-%d')
 df2 = df2[df2["Data"] == hoje]
-#st.write(df2)
+st.write(df2)
 df2["Item"] = df2["Item"].astype(str)
 contagem_itens = df2["Item"].value_counts().reset_index()
 contagem_itens.columns = ["Item", "Quantidade"]
