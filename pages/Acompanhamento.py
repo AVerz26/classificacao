@@ -27,7 +27,7 @@ df2["Data"] = df2["Dt. Produção Imp."].dt.strftime('%Y-%d-%m')
 hoje = pd.Timestamp.now().date()
 hoje = hoje.strftime('%Y-%d-%m')
 df2 = df2[df2["Data"] == hoje]
-st.write(df2)
+#st.write(df2)
 df2["Item"] = df2["Item"].astype(str)
 contagem_itens = df2["Item"].value_counts().reset_index()
 contagem_itens.columns = ["Item", "Quantidade"]
@@ -52,7 +52,7 @@ filtered_df['Número do Item'] = filtered_df['Número do Item'].astype(str)
 
 x = pd.merge(items, df2, left_on='Item', right_on='Item', how='right')
 
-st.write(x)
+#st.write(x)
 x = x.loc[x['Origem'].isin(["PVA-MOBA-1", "PVA-MOBA-2"])]
 soma_conv = x['Conv'].sum()
 #
