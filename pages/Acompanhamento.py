@@ -12,7 +12,7 @@ def save_to_csv_again(df):
 st.set_page_config(layout="wide")
 #Importação dos dados
 csv_file = "data.csv"
-excel_file = "BD_PROD.xlsx"
+excel_file = "classificacao/BD_PROD.xlsx"
 itens = "Items.xlsx"
 
 #Dataframes
@@ -48,7 +48,7 @@ filtered_df[['Número do Item', 'Descrição']] = filtered_df['Item'].str.split(
 # Converter o número do item para o tipo de dados string (str)
 filtered_df['Número do Item'] = filtered_df['Número do Item'].astype(str)
 
-st.write(filtered_df)
+#st.write(filtered_df)
 
 x = pd.merge(items, df2, left_on='Item', right_on='Item', how='right')
 
