@@ -6,6 +6,7 @@ import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 
+
 def save_to_csv(date, name, age, inicio, email):
     # Define CSV file path
     csv_file = "data.csv"
@@ -73,7 +74,7 @@ authenticator = stauth.Authenticate(
 )
 
 name, authentication_status, username = authenticator.login()
-
+hashed_passwords = stauth.Hasher(['MTQ102']).generate()
 if authentication_status:
     authenticator.logout('Logout', 'main')
     st.title("Adicionar itens para o guia:")
