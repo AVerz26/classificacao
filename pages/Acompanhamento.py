@@ -31,7 +31,7 @@ df2 = df2[df2["Data"] == hoje]
 df2["Item"] = df2["Item"].astype(str)
 contagem_itens = df2["Item"].value_counts().reset_index()
 contagem_itens.columns = ["Item", "Quantidade"]
-st.write(df)
+#st.write(df)
 
 # ----------------------------- GUIA -------------------------------#
 
