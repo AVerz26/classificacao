@@ -83,13 +83,13 @@ filtered_df = filtered_df.sort_values(by='Percentual', ascending=False)
 filtered_df['Faltantes'] = filtered_df['Produzido'] - filtered_df['A produzir']
 filtered_df.loc[filtered_df['Faltantes'] > 0, 'Faltantes'] = 0
 
-filtered_df.drop(['Item_x', 'Date', 'Quantidade', 'Número do Item','Situação'], axis=1, inplace=True)
+#filtered_df.drop(['Item_x', 'Date', 'Quantidade', 'Número do Item','Situação'], axis=1, inplace=True)
 #filtered_df.dropna(inplace=True)
 
 colunas = filtered_df.columns.tolist()
 nova_ordem_colunas = [colunas[2]] + colunas[:2] + colunas[3:]
 filtered_df = filtered_df[nova_ordem_colunas]
-filtered_df.drop(['Descrição'], axis=1, inplace=True)
+#filtered_df.drop(['Descrição'], axis=1, inplace=True)
 
 # ----------------------------------- SITE ----------------------------------- #
 
