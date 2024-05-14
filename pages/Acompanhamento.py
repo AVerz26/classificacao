@@ -78,6 +78,7 @@ filtered_df['A produzir'].fillna(0, inplace=True)
 filtered_df['Percentual'] = filtered_df['Produzido'] / filtered_df['A produzir']
 #st.write(filtered_df)
 filtered_df['Percentual'] *= 100
+filtered_df.loc[filtered_df['Percentual'] > 100, 'Percentual'] = 100
 #filtered_df['Percentual'] = filtered_df.apply(lambda row: min(row['Percentual'], 1) * 100, axis=1)
 #filtered_df['Percentual'] = filtered_df.apply(lambda row: f"{min(row['Percentual'], 1) * 100:.1f}%", axis=1)
 filtered_df = filtered_df.sort_values(by='Percentual', ascending=False)
