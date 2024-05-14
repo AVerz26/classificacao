@@ -18,7 +18,6 @@ itens = "Items.xlsx"
 #Dataframes
 df = pd.read_csv(csv_file)
 df2 = pd.read_excel(excel_file)
-st.write(df2)
 items = pd.read_excel(itens)
 items['Item'] = items['Item'].astype(str)
 # --------------------------- CONTAGEM ---------------------------- #
@@ -26,7 +25,7 @@ df2["Dt. Produção Imp."] = pd.to_datetime(df2["Dt. Produção Imp."])
 df2["Data"] = df2["Dt. Produção Imp."].dt.strftime('%Y-%d-%m')
 
 hoje = pd.Timestamp.now().date()
-hoje = hoje.strftime('%Y-%m-%d')
+hoje = hoje.strftime('%Y-%d-%m')
 df2 = df2[df2["Data"] == hoje]
 st.write(df2)
 df2["Item"] = df2["Item"].astype(str)
