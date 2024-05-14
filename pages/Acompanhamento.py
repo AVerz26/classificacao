@@ -12,7 +12,7 @@ def save_to_csv_again(df):
 st.set_page_config(layout="wide")
 #Importação dos dados
 csv_file = "data.csv"
-excel_file = "classificacao/BD_PROD.xlsx"
+excel_file = "BD_PROD.xlsx"
 itens = "Items.xlsx"
 
 #Dataframes
