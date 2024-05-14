@@ -85,7 +85,7 @@ filtered_df = filtered_df.sort_values(by='Percentual', ascending=False)
 filtered_df['Faltantes'] = filtered_df['Produzido'] - filtered_df['A produzir']
 filtered_df.loc[filtered_df['Faltantes'] > 0, 'Faltantes'] = 0
 
-filtered_df.drop(['Item_x', 'Date', 'Quantidade', 'Número do Item','Situação'], axis=1, inplace=True)
+filtered_df.drop(['Item_x', 'Date', 'Quantidade', 'Número do Item'], axis=1, inplace=True)
 filtered_df.dropna(inplace=True)
 
 colunas = filtered_df.columns.tolist()
@@ -125,7 +125,7 @@ with colu5:
     st.markdown("<div style='text-align: center'><em>(Balde: {}% )</em></div>".format(porcentagem_formatada5), unsafe_allow_html=True)
 
 
-filtered_df['Status'] = ""
+#filtered_df['Status'] = ""
 
 m = st.data_editor(
     filtered_df,
