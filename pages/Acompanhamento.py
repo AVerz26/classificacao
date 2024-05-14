@@ -49,7 +49,8 @@ filtered_df[['Número do Item', 'Descrição']] = filtered_df['Item'].str.split(
 filtered_df['Número do Item'] = filtered_df['Número do Item'].astype(str)
 
 
-x = pd.merge(items, df2, left_on='Item', right_on='Item', how='right')
+x = pd.merge(items, df2, left_on='Item', right_on='Item', how='left')
+
 st.write(x)
 x = x.loc[x['Origem'].isin(["PVA-MOBA-1", "PVA-MOBA-2"])]
 soma_conv = x['Conv'].sum()
