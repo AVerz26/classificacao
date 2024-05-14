@@ -2,12 +2,12 @@ import pandas as pd
 import streamlit as st
 import os
 
-def save_to_csv_again(df):
+def save_to_csv_again(m):
     # Define CSV file path
     csv_file = "data.csv"
 
     # Write DataFrame to CSV file
-    df.to_csv(csv_file, index=False)
+    m.to_csv(csv_file, index=False)
 
 st.set_page_config(layout="wide")
 #Importação dos dados
