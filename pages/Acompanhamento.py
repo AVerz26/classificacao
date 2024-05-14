@@ -132,7 +132,7 @@ m = st.data_editor(
     width = 1300,
     height = 800,
     column_config={
-        "Percentual": st.column_config.ProgressColumn(
+        "Percentual (%)": st.column_config.ProgressColumn(
             "Percentual",
             help="Cumprido",
             format="%.1f",
