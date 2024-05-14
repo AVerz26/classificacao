@@ -141,6 +141,6 @@ m = st.data_editor(
     hide_index=True,
 )
 
-if st.button("Salvar Alterações"):
-    save_to_csv_again(m)
+#if st.button("Salvar Alterações"):
+#    save_to_csv_again(m)
 
