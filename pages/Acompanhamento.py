@@ -127,6 +127,14 @@ with colu5:
 
 #filtered_df['Status'] = ""
 
+colunas = filtered_df.columns.tolist()
+
+# Move a primeira coluna para a última posição
+nova_ordem_colunas = colunas[1:] + [colunas[0]]
+
+# Reorganiza o DataFrame com a nova ordem de colunas
+filtered_df = filtered_df[nova_ordem_colunas]
+
 m = st.data_editor(
     filtered_df,
     width = 1300,
