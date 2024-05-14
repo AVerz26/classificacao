@@ -74,7 +74,7 @@ authenticator = stauth.Authenticate(
 )
 
 name, authentication_status, username = authenticator.login()
-hashed_passwords = stauth.Hasher(['MTQ102']).generate()
+
 if authentication_status:
     authenticator.logout('Logout', 'main')
     st.title("Adicionar itens para o guia:")
