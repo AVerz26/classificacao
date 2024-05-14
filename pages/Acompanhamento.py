@@ -76,7 +76,7 @@ filtered_df['Produzido'] = contagem_itens['Quantidade'].fillna(0).astype(int)
 filtered_df['Produzido'].fillna(0, inplace=True)
 filtered_df['A produzir'].fillna(0, inplace=True)
 filtered_df['Percentual'] = filtered_df['Produzido'] / filtered_df['A produzir']
-st.write(filtered_df)
+#st.write(filtered_df)
 filtered_df['Percentual'] *= 100
 #filtered_df['Percentual'] = filtered_df.apply(lambda row: min(row['Percentual'], 1) * 100, axis=1)
 #filtered_df['Percentual'] = filtered_df.apply(lambda row: f"{min(row['Percentual'], 1) * 100:.1f}%", axis=1)
