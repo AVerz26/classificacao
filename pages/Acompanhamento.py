@@ -40,7 +40,7 @@ df["Date"] = pd.to_datetime(df["Date"])
 today = pd.Timestamp.today().date()  # Obtém a data de hoje
 filtered_df = df[df["Date"].dt.date == today]
 filtered_df["A produzir"] = filtered_df["Quantidade"] - filtered_df["Estoque Inicio"]
-filtered_df = filtered_df.drop(["Quantidade", "Estoque Inicio"], axis = 1)
+#filtered_df = filtered_df.drop(["Quantidade", "Estoque Inicio"], axis = 1)
 
 
 filtered_df[['Número do Item', 'Descrição']] = filtered_df['Item'].str.split(' - ', expand=True)
