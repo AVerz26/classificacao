@@ -18,6 +18,7 @@ itens = "Items.xlsx"
 #Dataframes
 df = pd.read_csv(csv_file)
 df2 = pd.read_excel(excel_file)
+st.write(df2)
 items = pd.read_excel(itens)
 items['Item'] = items['Item'].astype(str)
 # --------------------------- CONTAGEM ---------------------------- #
