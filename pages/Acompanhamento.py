@@ -85,7 +85,7 @@ filtered_df['Faltantes'] = filtered_df['Produzido'] - filtered_df['A produzir']
 filtered_df.loc[filtered_df['Faltantes'] > 0, 'Faltantes'] = 0
 
 filtered_df.drop(['Item_x', 'Date', 'Quantidade', 'Número do Item','Situação'], axis=1, inplace=True)
-#filtered_df.dropna(inplace=True)
+filtered_df.dropna(inplace=True)
 
 colunas = filtered_df.columns.tolist()
 nova_ordem_colunas = [colunas[2]] + colunas[:2] + colunas[3:]
