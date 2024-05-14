@@ -67,7 +67,7 @@ contagem_b = contagem_tipos.get('BALDE', 0)
 porcentagem_balde = (contagem_b / len(x['Tipo'])) * 100
 
 # Fazer um merge entre df12 e contagem_itens usando o número do item como chave de junção
-filtered_df = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', right_on='Item', how='left')
+filtered_df = pd.merge(filtered_df, contagem_itens, left_on='Número do Item', right_on='Item', how='right')
 
 # Preencher a coluna "Produzido" com a contagem de itens correspondente
 filtered_df['Produzido'] = contagem_itens['Quantidade'].fillna(0).astype(int)
