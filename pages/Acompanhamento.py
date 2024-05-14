@@ -40,7 +40,7 @@ df["Date"] = pd.to_datetime(df["Date"])
 today = pd.Timestamp.today().date()  # Obtém a data de hoje
 filtered_df = df[df["Date"].dt.date == today]
 filtered_df["A produzir"] = filtered_df["Quantidade"] - filtered_df["Estoque Inicio"]
-#filtered_df = filtered_df.drop(["Quantidade", "Estoque Inicio"], axis = 1)
+filtered_df = filtered_df.drop(["Quantidade", "Estoque Inicio"], axis = 1)
 
 
 filtered_df[['Número do Item', 'Descrição']] = filtered_df['Item'].str.split(' - ', expand=True)
@@ -77,19 +77,19 @@ filtered_df['Produzido'].fillna(0, inplace=True)
 filtered_df['A produzir'].fillna(0, inplace=True)
 filtered_df['Percentual'] = filtered_df['Produzido'] / filtered_df['A produzir']
 filtered_df['Percentual'] = filtered_df.apply(lambda row: min(row['Percentual'], 1) * 100, axis=1)
-#filtered_df['Percentual'] = filtered_df.apply(lambda row: f"{min(row['Percentual'], 1) * 100:.1f}%", axis=1)
+filtered_df['Percentual'] = filtered_df.apply(lambda row: f"{min(row['Percentual'], 1) * 100:.1f}%", axis=1)
 filtered_df = filtered_df.sort_values(by='Percentual', ascending=False)
 
 filtered_df['Faltantes'] = filtered_df['Produzido'] - filtered_df['A produzir']
 filtered_df.loc[filtered_df['Faltantes'] > 0, 'Faltantes'] = 0
 
-#filtered_df.drop(['Item_x', 'Date', 'Quantidade', 'Número do Item','Situação'], axis=1, inplace=True)
-#filtered_df.dropna(inplace=True)
+filtered_df.drop(['Item_x', 'Date', 'Quantidade', 'Número do Item','Situação'], axis=1, inplace=True)
+filtered_df.dropna(inplace=True)
 
 colunas = filtered_df.columns.tolist()
 nova_ordem_colunas = [colunas[2]] + colunas[:2] + colunas[3:]
 filtered_df = filtered_df[nova_ordem_colunas]
-#filtered_df.drop(['Descrição'], axis=1, inplace=True)
+filtered_df.drop(['Descrição'], axis=1, inplace=True)
 
 # ----------------------------------- SITE ----------------------------------- #
 
