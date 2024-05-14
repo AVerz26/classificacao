@@ -48,7 +48,7 @@ filtered_df[['Número do Item', 'Descrição']] = filtered_df['Item'].str.split(
 # Converter o número do item para o tipo de dados string (str)
 filtered_df['Número do Item'] = filtered_df['Número do Item'].astype(str)
 
-st.write(df2)
+st.write(filtered_df)
 
 x = pd.merge(items, df2, left_on='Item', right_on='Item', how='right')
 
